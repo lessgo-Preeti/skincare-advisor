@@ -584,4 +584,18 @@ SYNONYMS = {
     "acrylates c10 30 alkyl acrylate crosspolymer": "acrylates crosspolymer",
     "glyceryl acrylate acrylic acid copolymer": "glyceryl acrylate",
     "peg 30 stearate": "peg stearate",
+
+   "peg-30 stearate": "peg stearate",
+    "peg30 stearate": "peg stearate",
+    "c10-30 alkyl acrylate crosspolymer": "acrylates crosspolymer",
+    "acrylates/c10-30 alkyl acrylate crosspolymer": "acrylates crosspolymer",
+    "acrylatesc10-30 alkyl acrylate crosspolymer": "acrylates crosspolymer",
+    "acrylatesc1o-30 alkyl acrylate crosspolymer": "acrylates crosspolymer",
+    "dicaprylyl ether 0": "dicaprylyl ether",
+    "glyceryl stearate 0": "glyceryl stearate",
+    "cetyl alcohol 0": "cetyl alcohol",
+    "dimethiconol 0": "dimethiconol",
+    "benzyl alcohol 0": "benzyl alcohol",
+    "propylene glycol 0": "propylene glycol",
+    "disodium edta 0": "disodium edta",
 }
