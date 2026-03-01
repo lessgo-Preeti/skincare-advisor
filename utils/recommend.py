@@ -1,4 +1,4 @@
-from data.ingredients import INGREDIENTS_DB
+from data.ingredients import INGREDIENTS_DB, SYNONYMS
 
 def analyze_ingredients(ingredients_list, skin_type):
     """
@@ -15,12 +15,16 @@ def analyze_ingredients(ingredients_list, skin_type):
     total_scored = 0
 
     for ingredient in ingredients_list:
-        # Normalize ingredient before matching
         normalized = ingredient.strip().lower()
 
+        # Apply synonym mapping as safety check
+        if normalized in SYNONYMS:
+            normalized = SYNONYMS[normalized]
+
         if normalized in INGREDIENTS_DB:
-            rating = INGREDIENTS_DB[normalized][skin_type]
-            reason = INGREDIENTS_DB[normalized]["reason"]
+            skin_data = INGREDIENTS_DB[normalized][skin_type]
+            rating = skin_data["rating"]
+            reason = skin_data["reason"]
             total_scored += 1
 
             if rating == "good":
@@ -35,17 +39,17 @@ def analyze_ingredients(ingredients_list, skin_type):
         else:
             unknown.append(normalized)
 
-    # Safety score — unknown ingredients reduce confidence
     total_ingredients = len(ingredients_list)
 
-    if total_ingredients > 0:
-        raw_score = score / (total_ingredients * 2)
+    # Scoring based on known ingredients only
+    if total_scored > 0:
+        raw_score = score / (total_scored * 2)
         safety_score = round(raw_score * 10, 1)
         safety_score = max(0, min(10, safety_score))
     else:
         safety_score = 0
 
-    # Confidence metric — how many ingredients were matched
+    # Confidence metric
     if total_ingredients > 0:
         confidence = round((total_scored / total_ingredients) * 100, 1)
     else:
@@ -65,7 +69,6 @@ def analyze_ingredients(ingredients_list, skin_type):
         verdict = "AVOID"
         verdict_detail = "This product contains ingredients harmful for your skin type."
 
-    # Build report
     report = {
         "verdict": verdict,
         "verdict_detail": verdict_detail,

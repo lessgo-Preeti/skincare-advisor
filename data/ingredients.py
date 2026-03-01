@@ -2,407 +2,532 @@ INGREDIENTS_DB = {
 
     # ===== HYDRATORS =====
     "water": {
-        "oily": "good", "dry": "good", "combination": "good",
-        "sensitive": "good", "normal": "good",
-        "reason": "Base ingredient, safe for all skin types"
+        "oily":        {"rating": "good", "reason": "Safe base ingredient, does not affect oily skin"},
+        "dry":         {"rating": "good", "reason": "Essential hydrating base for dry skin"},
+        "combination": {"rating": "good", "reason": "Safe base ingredient for combination skin"},
+        "sensitive":   {"rating": "good", "reason": "Safe and non-irritating base ingredient"},
+        "normal":      {"rating": "good", "reason": "Safe base ingredient for normal skin"},
     },
     "glycerin": {
-        "oily": "good", "dry": "good", "combination": "good",
-        "sensitive": "good", "normal": "good",
-        "reason": "Safe moisturizer for all skin types"
+        "oily":        {"rating": "good", "reason": "Lightweight humectant, does not clog pores"},
+        "dry":         {"rating": "good", "reason": "Excellent humectant that draws moisture into dry skin"},
+        "combination": {"rating": "good", "reason": "Balances moisture without making skin greasy"},
+        "sensitive":   {"rating": "good", "reason": "Gentle moisturizer safe for sensitive skin"},
+        "normal":      {"rating": "good", "reason": "Maintains healthy moisture levels"},
     },
     "hyaluronic acid": {
-        "oily": "good", "dry": "good", "combination": "good",
-        "sensitive": "good", "normal": "good",
-        "reason": "Hydrates without clogging pores"
+        "oily":        {"rating": "good", "reason": "Lightweight hydration without clogging pores"},
+        "dry":         {"rating": "good", "reason": "Deeply hydrates dry skin without heaviness"},
+        "combination": {"rating": "good", "reason": "Hydrates dry areas without adding oil"},
+        "sensitive":   {"rating": "good", "reason": "Gentle hydration safe for sensitive skin"},
+        "normal":      {"rating": "good", "reason": "Maintains optimal hydration levels"},
     },
     "aloe vera": {
-        "oily": "good", "dry": "good", "combination": "good",
-        "sensitive": "good", "normal": "good",
-        "reason": "Soothing and hydrating for all skin types"
+        "oily":        {"rating": "good", "reason": "Lightweight, soothing and oil-free hydration"},
+        "dry":         {"rating": "good", "reason": "Soothes and hydrates dry skin effectively"},
+        "combination": {"rating": "good", "reason": "Balances skin and soothes irritation"},
+        "sensitive":   {"rating": "good", "reason": "Calming and anti-inflammatory for sensitive skin"},
+        "normal":      {"rating": "good", "reason": "Maintains healthy and balanced skin"},
     },
     "propylene glycol": {
-        "oily": "caution", "dry": "good", "combination": "caution",
-        "sensitive": "caution", "normal": "good",
-        "reason": "Moisturizing but can irritate sensitive skin"
+        "oily":        {"rating": "good", "reason": "Lightweight humectant safe for oily skin"},
+        "dry":         {"rating": "good", "reason": "Effective humectant that helps dry skin retain moisture"},
+        "combination": {"rating": "good", "reason": "Safe moisturizing agent for combination skin"},
+        "sensitive":   {"rating": "caution", "reason": "Can cause irritation and redness on sensitive skin"},
+        "normal":      {"rating": "good", "reason": "Safe moisturizing agent for normal skin"},
     },
     "rose water": {
-        "oily": "good", "dry": "good", "combination": "good",
-        "sensitive": "good", "normal": "good",
-        "reason": "Gentle toner and hydrator safe for all skin types"
+        "oily":        {"rating": "good", "reason": "Natural astringent that helps control excess oil"},
+        "dry":         {"rating": "good", "reason": "Gentle hydration and soothing for dry skin"},
+        "combination": {"rating": "good", "reason": "Balances oil and hydration for combination skin"},
+        "sensitive":   {"rating": "good", "reason": "Anti-inflammatory and calming for sensitive skin"},
+        "normal":      {"rating": "good", "reason": "Maintains skin balance and freshness"},
     },
 
     # ===== ACTIVES =====
     "niacinamide": {
-        "oily": "good", "dry": "good", "combination": "good",
-        "sensitive": "caution", "normal": "good",
-        "reason": "Controls oil and minimizes pores"
+        "oily":        {"rating": "good", "reason": "Reduces sebum production and minimizes pores"},
+        "dry":         {"rating": "good", "reason": "Strengthens skin barrier and improves moisture retention"},
+        "combination": {"rating": "good", "reason": "Controls oil in T-zone and hydrates dry areas"},
+        "sensitive":   {"rating": "caution", "reason": "Generally safe but may cause flushing at high concentrations"},
+        "normal":      {"rating": "good", "reason": "Improves skin texture and tone"},
     },
     "salicylic acid": {
-        "oily": "good", "dry": "bad", "combination": "good",
-        "sensitive": "bad", "normal": "caution",
-        "reason": "Unclogs pores but over-dries skin"
+        "oily":        {"rating": "good", "reason": "Unclogs pores and controls excess sebum effectively"},
+        "dry":         {"rating": "bad", "reason": "Strips natural oils and worsens dryness and flaking"},
+        "combination": {"rating": "good", "reason": "Effective for oily T-zone but use sparingly on dry areas"},
+        "sensitive":   {"rating": "bad", "reason": "Too harsh and causes irritation on sensitive skin"},
+        "normal":      {"rating": "caution", "reason": "Effective for acne but can cause dryness with overuse"},
     },
     "retinol": {
-        "oily": "good", "dry": "caution", "combination": "caution",
-        "sensitive": "bad", "normal": "good",
-        "reason": "Anti-aging but irritates sensitive skin"
+        "oily":        {"rating": "good", "reason": "Reduces acne and controls oil while providing anti-aging benefits"},
+        "dry":         {"rating": "caution", "reason": "Can increase dryness, use with rich moisturizer"},
+        "combination": {"rating": "caution", "reason": "Effective but may cause dryness on already dry areas"},
+        "sensitive":   {"rating": "bad", "reason": "Causes redness, peeling and irritation on sensitive skin"},
+        "normal":      {"rating": "good", "reason": "Excellent anti-aging ingredient for normal skin"},
     },
     "vitamin c": {
-        "oily": "good", "dry": "caution", "combination": "good",
-        "sensitive": "caution", "normal": "good",
-        "reason": "Brightening but can irritate dry and sensitive skin"
+        "oily":        {"rating": "good", "reason": "Brightens skin and provides antioxidant protection"},
+        "dry":         {"rating": "caution", "reason": "Can be irritating on compromised dry skin barrier"},
+        "combination": {"rating": "good", "reason": "Brightening and protective for combination skin"},
+        "sensitive":   {"rating": "caution", "reason": "May cause stinging and irritation on sensitive skin"},
+        "normal":      {"rating": "good", "reason": "Excellent brightening and antioxidant ingredient"},
     },
     "vitamin e": {
-        "oily": "caution", "dry": "good", "combination": "caution",
-        "sensitive": "good", "normal": "good",
-        "reason": "Nourishing but can clog pores for oily skin"
+        "oily":        {"rating": "caution", "reason": "Rich and heavy, can clog pores on oily skin"},
+        "dry":         {"rating": "good", "reason": "Deeply nourishing and repairs dry skin barrier"},
+        "combination": {"rating": "caution", "reason": "Use only on dry areas, avoid oily T-zone"},
+        "sensitive":   {"rating": "good", "reason": "Soothing and barrier-repairing for sensitive skin"},
+        "normal":      {"rating": "good", "reason": "Nourishing antioxidant safe for normal skin"},
     },
     "benzoyl peroxide": {
-        "oily": "good", "dry": "bad", "combination": "caution",
-        "sensitive": "bad", "normal": "caution",
-        "reason": "Treats acne but very drying"
+        "oily":        {"rating": "good", "reason": "Kills acne-causing bacteria and reduces breakouts"},
+        "dry":         {"rating": "bad", "reason": "Extremely drying and irritating for already dry skin"},
+        "combination": {"rating": "caution", "reason": "Use only on oily acne-prone areas"},
+        "sensitive":   {"rating": "bad", "reason": "Causes severe irritation and dryness on sensitive skin"},
+        "normal":      {"rating": "caution", "reason": "Effective for acne but can cause dryness"},
     },
     "azelaic acid": {
-        "oily": "good", "dry": "caution", "combination": "good",
-        "sensitive": "good", "normal": "good",
-        "reason": "Gentle acne fighter, good for sensitive skin"
+        "oily":        {"rating": "good", "reason": "Reduces acne and controls sebum without drying"},
+        "dry":         {"rating": "caution", "reason": "Generally safe but monitor for increased dryness"},
+        "combination": {"rating": "good", "reason": "Balances acne treatment across skin zones"},
+        "sensitive":   {"rating": "good", "reason": "One of the gentlest acne-fighting ingredients"},
+        "normal":      {"rating": "good", "reason": "Improves skin clarity and texture"},
     },
     "lactic acid": {
-        "oily": "good", "dry": "good", "combination": "good",
-        "sensitive": "caution", "normal": "good",
-        "reason": "Gentle exfoliant with hydrating properties"
+        "oily":        {"rating": "good", "reason": "Gently exfoliates and unclogs pores"},
+        "dry":         {"rating": "good", "reason": "Exfoliates while providing hydration to dry skin"},
+        "combination": {"rating": "good", "reason": "Gentle exfoliation suitable for combination skin"},
+        "sensitive":   {"rating": "caution", "reason": "Gentlest AHA but may still cause mild irritation"},
+        "normal":      {"rating": "good", "reason": "Improves skin texture and radiance"},
     },
     "glycolic acid": {
-        "oily": "good", "dry": "caution", "combination": "good",
-        "sensitive": "bad", "normal": "good",
-        "reason": "Strong exfoliant, too harsh for sensitive skin"
+        "oily":        {"rating": "good", "reason": "Strong exfoliant that deeply unclogs pores"},
+        "dry":         {"rating": "caution", "reason": "Can worsen dryness and sensitivity"},
+        "combination": {"rating": "good", "reason": "Effective exfoliant for combination skin"},
+        "sensitive":   {"rating": "bad", "reason": "Too strong and causes irritation on sensitive skin"},
+        "normal":      {"rating": "good", "reason": "Effective exfoliant for improving skin texture"},
     },
     "kojic acid": {
-        "oily": "good", "dry": "caution", "combination": "good",
-        "sensitive": "bad", "normal": "good",
-        "reason": "Brightening agent but can irritate sensitive skin"
+        "oily":        {"rating": "good", "reason": "Brightens and reduces hyperpigmentation on oily skin"},
+        "dry":         {"rating": "caution", "reason": "Can cause dryness and irritation on dry skin"},
+        "combination": {"rating": "good", "reason": "Effective brightening for combination skin"},
+        "sensitive":   {"rating": "bad", "reason": "Causes irritation and redness on sensitive skin"},
+        "normal":      {"rating": "good", "reason": "Safe brightening ingredient for normal skin"},
     },
     "alpha arbutin": {
-        "oily": "good", "dry": "good", "combination": "good",
-        "sensitive": "good", "normal": "good",
-        "reason": "Gentle brightening ingredient safe for all skin types"
+        "oily":        {"rating": "good", "reason": "Gentle brightening without affecting oil levels"},
+        "dry":         {"rating": "good", "reason": "Safe brightening ingredient for dry skin"},
+        "combination": {"rating": "good", "reason": "Effective and gentle for combination skin"},
+        "sensitive":   {"rating": "good", "reason": "One of the safest brightening ingredients available"},
+        "normal":      {"rating": "good", "reason": "Gentle and effective brightening for normal skin"},
     },
     "bakuchiol": {
-        "oily": "good", "dry": "good", "combination": "good",
-        "sensitive": "good", "normal": "good",
-        "reason": "Natural retinol alternative safe for all skin types"
+        "oily":        {"rating": "good", "reason": "Natural retinol alternative without drying effects"},
+        "dry":         {"rating": "good", "reason": "Gentle anti-aging without worsening dryness"},
+        "combination": {"rating": "good", "reason": "Safe retinol alternative for combination skin"},
+        "sensitive":   {"rating": "good", "reason": "Gentlest retinol alternative for sensitive skin"},
+        "normal":      {"rating": "good", "reason": "Effective natural anti-aging ingredient"},
     },
 
     # ===== MOISTURIZERS =====
     "ceramides": {
-        "oily": "good", "dry": "good", "combination": "good",
-        "sensitive": "good", "normal": "good",
-        "reason": "Strengthens skin barrier for all skin types"
+        "oily":        {"rating": "good", "reason": "Strengthens skin barrier without adding heaviness"},
+        "dry":         {"rating": "good", "reason": "Repairs damaged skin barrier and prevents moisture loss"},
+        "combination": {"rating": "good", "reason": "Balances and strengthens skin barrier"},
+        "sensitive":   {"rating": "good", "reason": "Essential for repairing sensitive skin barrier"},
+        "normal":      {"rating": "good", "reason": "Maintains healthy skin barrier function"},
     },
     "petrolatum": {
-        "oily": "bad", "dry": "good", "combination": "caution",
-        "sensitive": "good", "normal": "good",
-        "reason": "Heavy occlusive, clogs pores for oily skin"
+        "oily":        {"rating": "bad", "reason": "Very heavy occlusive that clogs pores on oily skin"},
+        "dry":         {"rating": "good", "reason": "Excellent occlusive that seals moisture into dry skin"},
+        "combination": {"rating": "caution", "reason": "Use only on very dry areas, avoid oily zones"},
+        "sensitive":   {"rating": "good", "reason": "Safe protective barrier for sensitive skin"},
+        "normal":      {"rating": "good", "reason": "Effective moisture-sealing ingredient"},
     },
     "dimethicone": {
-        "oily": "caution", "dry": "good", "combination": "caution",
-        "sensitive": "good", "normal": "good",
-        "reason": "Silicone that smooths skin but can trap oil"
+        "oily":        {"rating": "caution", "reason": "Can trap sebum and cause congestion on oily skin"},
+        "dry":         {"rating": "good", "reason": "Creates protective layer that prevents moisture loss"},
+        "combination": {"rating": "caution", "reason": "May cause congestion in oily zones"},
+        "sensitive":   {"rating": "good", "reason": "Creates protective barrier safe for sensitive skin"},
+        "normal":      {"rating": "good", "reason": "Smoothing ingredient safe for normal skin"},
     },
     "shea butter": {
-        "oily": "bad", "dry": "good", "combination": "caution",
-        "sensitive": "good", "normal": "good",
-        "reason": "Very rich and nourishing but too heavy for oily skin"
+        "oily":        {"rating": "bad", "reason": "Very rich and comedogenic, clogs pores on oily skin"},
+        "dry":         {"rating": "good", "reason": "Intensely nourishing and moisturizing for dry skin"},
+        "combination": {"rating": "caution", "reason": "Use only on dry patches, avoid oily areas"},
+        "sensitive":   {"rating": "good", "reason": "Soothing and nourishing for sensitive skin"},
+        "normal":      {"rating": "good", "reason": "Rich moisturizer suitable for normal skin"},
     },
     "jojoba oil": {
-        "oily": "good", "dry": "good", "combination": "good",
-        "sensitive": "good", "normal": "good",
-        "reason": "Balancing oil that mimics skin sebum"
+        "oily":        {"rating": "good", "reason": "Mimics sebum and helps regulate oil production"},
+        "dry":         {"rating": "good", "reason": "Nourishing oil that restores moisture to dry skin"},
+        "combination": {"rating": "good", "reason": "Balancing oil suitable for all zones"},
+        "sensitive":   {"rating": "good", "reason": "Non-irritating and gentle for sensitive skin"},
+        "normal":      {"rating": "good", "reason": "Balancing and nourishing for normal skin"},
     },
     "squalane": {
-        "oily": "good", "dry": "good", "combination": "good",
-        "sensitive": "good", "normal": "good",
-        "reason": "Lightweight oil safe for all skin types"
+        "oily":        {"rating": "good", "reason": "Lightweight oil that does not clog pores"},
+        "dry":         {"rating": "good", "reason": "Deeply hydrating and nourishing for dry skin"},
+        "combination": {"rating": "good", "reason": "Lightweight enough for all zones"},
+        "sensitive":   {"rating": "good", "reason": "Very gentle and non-irritating for sensitive skin"},
+        "normal":      {"rating": "good", "reason": "Lightweight and effective for normal skin"},
     },
     "coconut oil": {
-        "oily": "bad", "dry": "good", "combination": "bad",
-        "sensitive": "caution", "normal": "caution",
-        "reason": "Highly comedogenic, clogs pores easily"
+        "oily":        {"rating": "bad", "reason": "Highly comedogenic, causes breakouts on oily skin"},
+        "dry":         {"rating": "good", "reason": "Deeply moisturizing for very dry skin"},
+        "combination": {"rating": "bad", "reason": "Clogs pores even on combination skin"},
+        "sensitive":   {"rating": "caution", "reason": "May cause reactions on some sensitive skin types"},
+        "normal":      {"rating": "caution", "reason": "Comedogenic rating is high, use with caution"},
     },
     "argan oil": {
-        "oily": "caution", "dry": "good", "combination": "caution",
-        "sensitive": "good", "normal": "good",
-        "reason": "Nourishing but can be heavy for oily skin"
+        "oily":        {"rating": "caution", "reason": "Can feel heavy and increase shine on oily skin"},
+        "dry":         {"rating": "good", "reason": "Nourishing and moisturizing for dry skin"},
+        "combination": {"rating": "caution", "reason": "Use sparingly on oily areas only"},
+        "sensitive":   {"rating": "good", "reason": "Anti-inflammatory and gentle for sensitive skin"},
+        "normal":      {"rating": "good", "reason": "Nourishing and balancing for normal skin"},
     },
     "moringa oil": {
-        "oily": "good", "dry": "good", "combination": "good",
-        "sensitive": "good", "normal": "good",
-        "reason": "Lightweight oil with antioxidant properties"
+        "oily":        {"rating": "good", "reason": "Lightweight and absorbs quickly without greasiness"},
+        "dry":         {"rating": "good", "reason": "Rich in fatty acids that nourish dry skin"},
+        "combination": {"rating": "good", "reason": "Lightweight enough for combination skin"},
+        "sensitive":   {"rating": "good", "reason": "Anti-inflammatory and soothing for sensitive skin"},
+        "normal":      {"rating": "good", "reason": "Nourishing antioxidant oil for normal skin"},
     },
     "kokum butter": {
-        "oily": "caution", "dry": "good", "combination": "caution",
-        "sensitive": "good", "normal": "good",
-        "reason": "Rich butter, deeply moisturizing but heavy for oily skin"
+        "oily":        {"rating": "caution", "reason": "Rich butter that may feel heavy on oily skin"},
+        "dry":         {"rating": "good", "reason": "Intensely moisturizing for very dry skin"},
+        "combination": {"rating": "caution", "reason": "Use only on dry patches of combination skin"},
+        "sensitive":   {"rating": "good", "reason": "Non-comedogenic and soothing for sensitive skin"},
+        "normal":      {"rating": "good", "reason": "Rich moisturizer suitable for normal skin"},
     },
     "rose hip oil": {
-        "oily": "caution", "dry": "good", "combination": "caution",
-        "sensitive": "good", "normal": "good",
-        "reason": "Rich in vitamin C and fatty acids, heavy for oily skin"
+        "oily":        {"rating": "caution", "reason": "Rich oil that may increase shine on oily skin"},
+        "dry":         {"rating": "good", "reason": "Rich in vitamins A and C, excellent for dry skin"},
+        "combination": {"rating": "caution", "reason": "Use sparingly, may be heavy on oily zones"},
+        "sensitive":   {"rating": "good", "reason": "Anti-inflammatory properties good for sensitive skin"},
+        "normal":      {"rating": "good", "reason": "Brightening and nourishing for normal skin"},
     },
     "kumkumadi oil": {
-        "oily": "caution", "dry": "good", "combination": "caution",
-        "sensitive": "good", "normal": "good",
-        "reason": "Ayurvedic brightening oil, heavy for oily skin"
+        "oily":        {"rating": "caution", "reason": "Heavy Ayurvedic oil, may clog pores on oily skin"},
+        "dry":         {"rating": "good", "reason": "Deeply nourishing Ayurvedic brightening oil for dry skin"},
+        "combination": {"rating": "caution", "reason": "Use only on dry areas of combination skin"},
+        "sensitive":   {"rating": "good", "reason": "Traditionally used for sensitive and dull skin"},
+        "normal":      {"rating": "good", "reason": "Brightening Ayurvedic oil for normal skin"},
+    },
+    "sweet almond oil": {
+        "oily":        {"rating": "caution", "reason": "Moderately heavy oil that may increase shine"},
+        "dry":         {"rating": "good", "reason": "Nourishing and softening for dry skin"},
+        "combination": {"rating": "caution", "reason": "Use sparingly on dry areas only"},
+        "sensitive":   {"rating": "good", "reason": "Gentle and soothing for sensitive skin"},
+        "normal":      {"rating": "good", "reason": "Nourishing oil suitable for normal skin"},
+    },
+    "sunflower oil": {
+        "oily":        {"rating": "good", "reason": "High linoleic acid content helps balance oily skin"},
+        "dry":         {"rating": "good", "reason": "Nourishing and moisturizing for dry skin"},
+        "combination": {"rating": "good", "reason": "Lightweight and suitable for combination skin"},
+        "sensitive":   {"rating": "good", "reason": "Gentle and non-irritating for sensitive skin"},
+        "normal":      {"rating": "good", "reason": "Lightweight nourishing oil for normal skin"},
     },
 
     # ===== AYURVEDIC / INDIAN INGREDIENTS =====
     "turmeric": {
-        "oily": "good", "dry": "good", "combination": "good",
-        "sensitive": "caution", "normal": "good",
-        "reason": "Anti-inflammatory and brightening but may irritate sensitive skin"
+        "oily":        {"rating": "good", "reason": "Anti-inflammatory and antibacterial for acne-prone oily skin"},
+        "dry":         {"rating": "good", "reason": "Brightening and healing for dry skin"},
+        "combination": {"rating": "good", "reason": "Anti-inflammatory benefit for combination skin"},
+        "sensitive":   {"rating": "caution", "reason": "May cause irritation or staining on sensitive skin"},
+        "normal":      {"rating": "good", "reason": "Brightening and antioxidant for normal skin"},
     },
     "neem": {
-        "oily": "good", "dry": "caution", "combination": "good",
-        "sensitive": "caution", "normal": "good",
-        "reason": "Antibacterial and acne-fighting but drying for dry skin"
+        "oily":        {"rating": "good", "reason": "Powerful antibacterial that fights acne on oily skin"},
+        "dry":         {"rating": "caution", "reason": "Antibacterial properties but drying for dry skin"},
+        "combination": {"rating": "good", "reason": "Controls bacteria on oily zones effectively"},
+        "sensitive":   {"rating": "caution", "reason": "Strong antibacterial may irritate sensitive skin"},
+        "normal":      {"rating": "good", "reason": "Purifying and antibacterial for normal skin"},
     },
     "sandalwood": {
-        "oily": "good", "dry": "good", "combination": "good",
-        "sensitive": "good", "normal": "good",
-        "reason": "Cooling and soothing for all skin types"
+        "oily":        {"rating": "good", "reason": "Natural astringent that controls oil production"},
+        "dry":         {"rating": "good", "reason": "Cooling and moisturizing for dry skin"},
+        "combination": {"rating": "good", "reason": "Balancing and soothing for combination skin"},
+        "sensitive":   {"rating": "good", "reason": "Anti-inflammatory and cooling for sensitive skin"},
+        "normal":      {"rating": "good", "reason": "Soothing and balancing for normal skin"},
     },
     "licorice root extract": {
-        "oily": "good", "dry": "good", "combination": "good",
-        "sensitive": "good", "normal": "good",
-        "reason": "Brightening and anti-inflammatory ingredient"
+        "oily":        {"rating": "good", "reason": "Brightening and anti-inflammatory for oily skin"},
+        "dry":         {"rating": "good", "reason": "Gentle brightening and soothing for dry skin"},
+        "combination": {"rating": "good", "reason": "Brightening and balancing for combination skin"},
+        "sensitive":   {"rating": "good", "reason": "Very gentle brightening safe for sensitive skin"},
+        "normal":      {"rating": "good", "reason": "Effective brightening for hyperpigmentation"},
     },
     "manjistha": {
-        "oily": "good", "dry": "good", "combination": "good",
-        "sensitive": "good", "normal": "good",
-        "reason": "Ayurvedic herb for brightening and detoxification"
+        "oily":        {"rating": "good", "reason": "Detoxifying and brightening for oily skin"},
+        "dry":         {"rating": "good", "reason": "Brightening and nourishing for dry skin"},
+        "combination": {"rating": "good", "reason": "Detoxifying Ayurvedic herb for combination skin"},
+        "sensitive":   {"rating": "good", "reason": "Gentle Ayurvedic brightening for sensitive skin"},
+        "normal":      {"rating": "good", "reason": "Brightening and detoxifying for normal skin"},
     },
     "ashwagandha": {
-        "oily": "good", "dry": "good", "combination": "good",
-        "sensitive": "caution", "normal": "good",
-        "reason": "Adaptogenic herb with anti-aging properties"
+        "oily":        {"rating": "good", "reason": "Adaptogenic herb that reduces stress-related breakouts"},
+        "dry":         {"rating": "good", "reason": "Anti-aging and nourishing for dry skin"},
+        "combination": {"rating": "good", "reason": "Stress-reducing benefits for combination skin"},
+        "sensitive":   {"rating": "caution", "reason": "Generally safe but patch test recommended"},
+        "normal":      {"rating": "good", "reason": "Anti-aging Ayurvedic herb for normal skin"},
     },
     "amla": {
-        "oily": "good", "dry": "good", "combination": "good",
-        "sensitive": "good", "normal": "good",
-        "reason": "Rich in vitamin C, brightening and antioxidant"
+        "oily":        {"rating": "good", "reason": "Natural vitamin C source that brightens oily skin"},
+        "dry":         {"rating": "good", "reason": "Vitamin C rich ingredient that nourishes dry skin"},
+        "combination": {"rating": "good", "reason": "Brightening and antioxidant for combination skin"},
+        "sensitive":   {"rating": "good", "reason": "Gentle natural vitamin C for sensitive skin"},
+        "normal":      {"rating": "good", "reason": "Brightening and antioxidant for normal skin"},
     },
     "tulsi": {
-        "oily": "good", "dry": "caution", "combination": "good",
-        "sensitive": "caution", "normal": "good",
-        "reason": "Antibacterial herb, can be drying for sensitive skin"
+        "oily":        {"rating": "good", "reason": "Antibacterial properties reduce acne on oily skin"},
+        "dry":         {"rating": "caution", "reason": "Antibacterial but can be drying for dry skin"},
+        "combination": {"rating": "good", "reason": "Antibacterial benefit for oily zones"},
+        "sensitive":   {"rating": "caution", "reason": "Strong herb that may irritate sensitive skin"},
+        "normal":      {"rating": "good", "reason": "Purifying and antibacterial for normal skin"},
     },
     "multani mitti": {
-        "oily": "good", "dry": "bad", "combination": "good",
-        "sensitive": "caution", "normal": "caution",
-        "reason": "Fuller earth clay, excellent for oily skin but very drying"
+        "oily":        {"rating": "good", "reason": "Excellent clay that absorbs excess oil and unclogs pores"},
+        "dry":         {"rating": "bad", "reason": "Extremely drying and strips moisture from dry skin"},
+        "combination": {"rating": "good", "reason": "Use only on oily T-zone to absorb excess oil"},
+        "sensitive":   {"rating": "caution", "reason": "Can be drying and irritating for sensitive skin"},
+        "normal":      {"rating": "caution", "reason": "Use sparingly as it can cause dryness"},
     },
     "kasturi turmeric": {
-        "oily": "good", "dry": "good", "combination": "good",
-        "sensitive": "good", "normal": "good",
-        "reason": "Gentle form of turmeric safe for all skin types"
+        "oily":        {"rating": "good", "reason": "Gentle brightening without staining on oily skin"},
+        "dry":         {"rating": "good", "reason": "Safe brightening for dry skin without irritation"},
+        "combination": {"rating": "good", "reason": "Gentle brightening safe for all zones"},
+        "sensitive":   {"rating": "good", "reason": "Gentler than regular turmeric for sensitive skin"},
+        "normal":      {"rating": "good", "reason": "Safe brightening ingredient for normal skin"},
     },
     "lodhra": {
-        "oily": "good", "dry": "caution", "combination": "good",
-        "sensitive": "caution", "normal": "good",
-        "reason": "Ayurvedic astringent herb, good for oily skin"
+        "oily":        {"rating": "good", "reason": "Astringent herb that tightens pores on oily skin"},
+        "dry":         {"rating": "caution", "reason": "Astringent properties can worsen dryness"},
+        "combination": {"rating": "good", "reason": "Helps control oil in T-zone"},
+        "sensitive":   {"rating": "caution", "reason": "Astringent nature may irritate sensitive skin"},
+        "normal":      {"rating": "good", "reason": "Toning and balancing for normal skin"},
     },
     "brahmi": {
-        "oily": "good", "dry": "good", "combination": "good",
-        "sensitive": "good", "normal": "good",
-        "reason": "Ayurvedic herb with anti-aging and calming properties"
+        "oily":        {"rating": "good", "reason": "Calming herb that reduces inflammation on oily skin"},
+        "dry":         {"rating": "good", "reason": "Nourishing and anti-aging for dry skin"},
+        "combination": {"rating": "good", "reason": "Calming and balancing for combination skin"},
+        "sensitive":   {"rating": "good", "reason": "Soothing and calming for sensitive skin"},
+        "normal":      {"rating": "good", "reason": "Anti-aging and calming for normal skin"},
     },
     "vetiver": {
-        "oily": "good", "dry": "caution", "combination": "good",
-        "sensitive": "caution", "normal": "good",
-        "reason": "Cooling and astringent, good for oily and acne prone skin"
+        "oily":        {"rating": "good", "reason": "Cooling and astringent, controls oil production"},
+        "dry":         {"rating": "caution", "reason": "Astringent properties can increase dryness"},
+        "combination": {"rating": "good", "reason": "Controls oil in T-zone effectively"},
+        "sensitive":   {"rating": "caution", "reason": "Astringent nature may cause sensitivity"},
+        "normal":      {"rating": "good", "reason": "Cooling and toning for normal skin"},
     },
     "chandan": {
-        "oily": "good", "dry": "good", "combination": "good",
-        "sensitive": "good", "normal": "good",
-        "reason": "Sandalwood based ingredient, cooling and soothing"
+        "oily":        {"rating": "good", "reason": "Natural astringent that controls oil and soothes skin"},
+        "dry":         {"rating": "good", "reason": "Cooling and moisturizing for dry skin"},
+        "combination": {"rating": "good", "reason": "Balancing and soothing for combination skin"},
+        "sensitive":   {"rating": "good", "reason": "Anti-inflammatory and cooling for sensitive skin"},
+        "normal":      {"rating": "good", "reason": "Soothing and balancing for normal skin"},
     },
 
     # ===== IRRITANTS =====
     "alcohol": {
-        "oily": "caution", "dry": "bad", "combination": "caution",
-        "sensitive": "bad", "normal": "caution",
-        "reason": "Drying and irritating ingredient"
+        "oily":        {"rating": "caution", "reason": "Temporarily reduces oil but causes rebound oiliness"},
+        "dry":         {"rating": "bad", "reason": "Strips natural oils and severely worsens dryness"},
+        "combination": {"rating": "caution", "reason": "Drying effect can worsen dry areas"},
+        "sensitive":   {"rating": "bad", "reason": "Causes irritation, redness and barrier damage"},
+        "normal":      {"rating": "caution", "reason": "Can cause dryness and irritation with regular use"},
     },
     "fragrance": {
-        "oily": "caution", "dry": "caution", "combination": "caution",
-        "sensitive": "bad", "normal": "caution",
-        "reason": "Common irritant, avoid for sensitive skin"
+        "oily":        {"rating": "caution", "reason": "Common allergen that can trigger breakouts"},
+        "dry":         {"rating": "caution", "reason": "Can cause irritation on compromised dry skin"},
+        "combination": {"rating": "caution", "reason": "Potential allergen for combination skin"},
+        "sensitive":   {"rating": "bad", "reason": "Leading cause of contact dermatitis in sensitive skin"},
+        "normal":      {"rating": "caution", "reason": "Common allergen, patch test recommended"},
     },
     "parabens": {
-        "oily": "caution", "dry": "caution", "combination": "caution",
-        "sensitive": "bad", "normal": "caution",
-        "reason": "Preservative, may irritate sensitive skin"
+        "oily":        {"rating": "caution", "reason": "Preservative with potential hormone disruption concerns"},
+        "dry":         {"rating": "caution", "reason": "May cause irritation on compromised dry skin"},
+        "combination": {"rating": "caution", "reason": "Preservative with some safety concerns"},
+        "sensitive":   {"rating": "bad", "reason": "Can cause allergic reactions on sensitive skin"},
+        "normal":      {"rating": "caution", "reason": "Generally safe but some long term concerns exist"},
     },
     "sulfates": {
-        "oily": "caution", "dry": "bad", "combination": "caution",
-        "sensitive": "bad", "normal": "caution",
-        "reason": "Harsh cleansing agents, strips natural oils"
+        "oily":        {"rating": "caution", "reason": "Too harsh and strips beneficial oils on oily skin"},
+        "dry":         {"rating": "bad", "reason": "Severely strips moisture and worsens dry skin"},
+        "combination": {"rating": "caution", "reason": "Too harsh for dry areas of combination skin"},
+        "sensitive":   {"rating": "bad", "reason": "Causes irritation and damages sensitive skin barrier"},
+        "normal":      {"rating": "caution", "reason": "Strips natural oils with regular use"},
     },
     "mineral oil": {
-        "oily": "bad", "dry": "good", "combination": "caution",
-        "sensitive": "caution", "normal": "caution",
-        "reason": "Occlusive, can clog pores for oily skin"
+        "oily":        {"rating": "bad", "reason": "Occlusive ingredient that clogs pores on oily skin"},
+        "dry":         {"rating": "good", "reason": "Seals moisture effectively for dry skin"},
+        "combination": {"rating": "caution", "reason": "May clog pores on oily areas"},
+        "sensitive":   {"rating": "caution", "reason": "Generally safe but can trap bacteria"},
+        "normal":      {"rating": "caution", "reason": "Occlusive nature may cause congestion"},
     },
 
     # ===== SOOTHING =====
     "centella asiatica": {
-        "oily": "good", "dry": "good", "combination": "good",
-        "sensitive": "good", "normal": "good",
-        "reason": "Calming and healing for all skin types"
+        "oily":        {"rating": "good", "reason": "Calming and healing for acne-prone oily skin"},
+        "dry":         {"rating": "good", "reason": "Healing and barrier-strengthening for dry skin"},
+        "combination": {"rating": "good", "reason": "Calming and healing for combination skin"},
+        "sensitive":   {"rating": "good", "reason": "One of the best ingredients for sensitive skin"},
+        "normal":      {"rating": "good", "reason": "Healing and anti-aging for normal skin"},
     },
     "green tea extract": {
-        "oily": "good", "dry": "good", "combination": "good",
-        "sensitive": "good", "normal": "good",
-        "reason": "Antioxidant and anti-inflammatory ingredient"
+        "oily":        {"rating": "good", "reason": "Antioxidant and reduces sebum production"},
+        "dry":         {"rating": "good", "reason": "Antioxidant protection for dry skin"},
+        "combination": {"rating": "good", "reason": "Antioxidant and balancing for combination skin"},
+        "sensitive":   {"rating": "good", "reason": "Anti-inflammatory and gentle for sensitive skin"},
+        "normal":      {"rating": "good", "reason": "Antioxidant protection for normal skin"},
     },
     "chamomile extract": {
-        "oily": "good", "dry": "good", "combination": "good",
-        "sensitive": "good", "normal": "good",
-        "reason": "Soothing and calming ingredient"
+        "oily":        {"rating": "good", "reason": "Calming and reduces inflammation on oily skin"},
+        "dry":         {"rating": "good", "reason": "Soothing and anti-inflammatory for dry skin"},
+        "combination": {"rating": "good", "reason": "Calming and balancing for combination skin"},
+        "sensitive":   {"rating": "good", "reason": "One of the gentlest soothing ingredients available"},
+        "normal":      {"rating": "good", "reason": "Soothing and calming for normal skin"},
     },
 
     # ===== SUNSCREEN =====
     "zinc oxide": {
-        "oily": "good", "dry": "good", "combination": "good",
-        "sensitive": "good", "normal": "good",
-        "reason": "Safe physical sunscreen for all skin types"
+        "oily":        {"rating": "good", "reason": "Physical sunscreen that also helps control oil"},
+        "dry":         {"rating": "good", "reason": "Gentle physical sunscreen safe for dry skin"},
+        "combination": {"rating": "good", "reason": "Safe physical sunscreen for all zones"},
+        "sensitive":   {"rating": "good", "reason": "Safest sunscreen option for sensitive skin"},
+        "normal":      {"rating": "good", "reason": "Effective and safe physical sunscreen"},
     },
     "titanium dioxide": {
-        "oily": "good", "dry": "good", "combination": "good",
-        "sensitive": "good", "normal": "good",
-        "reason": "Physical sunscreen, gentle on all skin types"
+        "oily":        {"rating": "good", "reason": "Lightweight physical sunscreen for oily skin"},
+        "dry":         {"rating": "good", "reason": "Gentle physical sunscreen for dry skin"},
+        "combination": {"rating": "good", "reason": "Safe physical sunscreen for combination skin"},
+        "sensitive":   {"rating": "good", "reason": "Gentle physical sunscreen for sensitive skin"},
+        "normal":      {"rating": "good", "reason": "Effective physical sunscreen for normal skin"},
     },
     "avobenzone": {
-        "oily": "good", "dry": "good", "combination": "good",
-        "sensitive": "caution", "normal": "good",
-        "reason": "Chemical sunscreen, may irritate sensitive skin"
+        "oily":        {"rating": "good", "reason": "Effective chemical sunscreen for oily skin"},
+        "dry":         {"rating": "good", "reason": "Effective chemical sunscreen for dry skin"},
+        "combination": {"rating": "good", "reason": "Effective chemical sunscreen for combination skin"},
+        "sensitive":   {"rating": "caution", "reason": "Chemical sunscreen may irritate sensitive skin"},
+        "normal":      {"rating": "good", "reason": "Effective chemical sunscreen for normal skin"},
     },
     "oxybenzone": {
-        "oily": "caution", "dry": "caution", "combination": "caution",
-        "sensitive": "bad", "normal": "caution",
-        "reason": "Chemical sunscreen linked to skin irritation"
+        "oily":        {"rating": "caution", "reason": "Chemical sunscreen with potential irritation"},
+        "dry":         {"rating": "caution", "reason": "Chemical sunscreen that may cause dryness"},
+        "combination": {"rating": "caution", "reason": "Chemical sunscreen with some irritation risk"},
+        "sensitive":   {"rating": "bad", "reason": "Known irritant and allergen for sensitive skin"},
+        "normal":      {"rating": "caution", "reason": "Chemical sunscreen with some safety concerns"},
     },
 
     # ===== PRESERVATIVES =====
     "phenoxyethanol": {
-        "oily": "good", "dry": "good", "combination": "good",
-        "sensitive": "caution", "normal": "good",
-        "reason": "Safe preservative but use with caution for sensitive skin"
+        "oily":        {"rating": "good", "reason": "Safe preservative that does not affect oily skin"},
+        "dry":         {"rating": "good", "reason": "Safe preservative for dry skin formulations"},
+        "combination": {"rating": "good", "reason": "Safe preservative for combination skin"},
+        "sensitive":   {"rating": "caution", "reason": "Safe at low concentrations but patch test recommended"},
+        "normal":      {"rating": "good", "reason": "Safe and widely used preservative"},
     },
     "sodium benzoate": {
-        "oily": "good", "dry": "good", "combination": "good",
-        "sensitive": "caution", "normal": "good",
-        "reason": "Common preservative, generally safe"
+        "oily":        {"rating": "good", "reason": "Safe preservative for oily skin formulations"},
+        "dry":         {"rating": "good", "reason": "Safe preservative for dry skin formulations"},
+        "combination": {"rating": "good", "reason": "Safe preservative for combination skin"},
+        "sensitive":   {"rating": "caution", "reason": "Generally safe but may cause reactions in some"},
+        "normal":      {"rating": "good", "reason": "Safe and common preservative"},
+    },
+    "benzyl alcohol": {
+        "oily":        {"rating": "good", "reason": "Safe preservative and solvent for oily skin"},
+        "dry":         {"rating": "good", "reason": "Safe preservative for dry skin"},
+        "combination": {"rating": "good", "reason": "Safe preservative for combination skin"},
+        "sensitive":   {"rating": "caution", "reason": "May cause irritation on very sensitive skin"},
+        "normal":      {"rating": "good", "reason": "Safe preservative for normal skin"},
     },
 
     # ===== EMULSIFIERS =====
     "cetyl alcohol": {
-        "oily": "caution", "dry": "good", "combination": "caution",
-        "sensitive": "good", "normal": "good",
-        "reason": "Fatty alcohol, moisturizing not drying"
+        "oily":        {"rating": "caution", "reason": "Fatty alcohol that may feel heavy on oily skin"},
+        "dry":         {"rating": "good", "reason": "Moisturizing fatty alcohol that softens dry skin"},
+        "combination": {"rating": "caution", "reason": "May feel heavy on oily zones"},
+        "sensitive":   {"rating": "good", "reason": "Gentle fatty alcohol safe for sensitive skin"},
+        "normal":      {"rating": "good", "reason": "Safe emulsifier and moisturizing ingredient"},
     },
     "stearic acid": {
-        "oily": "caution", "dry": "good", "combination": "caution",
-        "sensitive": "good", "normal": "good",
-        "reason": "Emulsifier, can be heavy for oily skin"
+        "oily":        {"rating": "caution", "reason": "Can feel heavy and contribute to congestion"},
+        "dry":         {"rating": "good", "reason": "Softening and moisturizing for dry skin"},
+        "combination": {"rating": "caution", "reason": "May be heavy for oily areas"},
+        "sensitive":   {"rating": "good", "reason": "Generally gentle and safe for sensitive skin"},
+        "normal":      {"rating": "good", "reason": "Safe emulsifier for normal skin"},
     },
-
-    # ===== EMOLLIENTS AND ESTERS =====
-    "dicaprylyl ether": {
-        "oily": "caution", "dry": "good", "combination": "caution",
-        "sensitive": "good", "normal": "good",
-        "reason": "Lightweight emollient, slightly heavy for oily skin"
-    },
-    "dicaprylyl carbonate": {
-        "oily": "caution", "dry": "good", "combination": "caution",
-        "sensitive": "good", "normal": "good",
-        "reason": "Lightweight emollient oil, may feel heavy on oily skin"
-    },
-
-    # ===== EMULSIFIERS =====
     "glyceryl stearate": {
-        "oily": "caution", "dry": "good", "combination": "caution",
-        "sensitive": "good", "normal": "good",
-        "reason": "Common emulsifier, generally safe but slightly heavy"
+        "oily":        {"rating": "caution", "reason": "Emulsifier that may feel heavy on oily skin"},
+        "dry":         {"rating": "good", "reason": "Moisturizing emulsifier good for dry skin"},
+        "combination": {"rating": "caution", "reason": "May contribute to oiliness in T-zone"},
+        "sensitive":   {"rating": "good", "reason": "Generally gentle emulsifier for sensitive skin"},
+        "normal":      {"rating": "good", "reason": "Safe and common emulsifier"},
     },
     "peg stearate": {
-        "oily": "caution", "dry": "good", "combination": "caution",
-        "sensitive": "caution", "normal": "good",
-        "reason": "Emulsifier, may irritate sensitive skin"
-    },
-    "stearyl alcohol": {
-        "oily": "caution", "dry": "good", "combination": "caution",
-        "sensitive": "good", "normal": "good",
-        "reason": "Fatty alcohol used as emulsifier, safe but heavy"
+        "oily":        {"rating": "caution", "reason": "May clog pores on sensitive oily skin"},
+        "dry":         {"rating": "good", "reason": "Effective emulsifier for dry skin formulations"},
+        "combination": {"rating": "caution", "reason": "May cause congestion on oily areas"},
+        "sensitive":   {"rating": "caution", "reason": "PEG compounds may irritate sensitive skin"},
+        "normal":      {"rating": "good", "reason": "Safe emulsifier for normal skin"},
     },
 
     # ===== SILICONES =====
     "dimethiconol": {
-        "oily": "caution", "dry": "good", "combination": "caution",
-        "sensitive": "good", "normal": "good",
-        "reason": "Silicone variant that smooths skin, can trap oil"
-    },
-    "cyclomethicone": {
-        "oily": "caution", "dry": "good", "combination": "caution",
-        "sensitive": "good", "normal": "good",
-        "reason": "Lightweight silicone, evaporates quickly"
+        "oily":        {"rating": "caution", "reason": "Silicone variant that can trap sebum on oily skin"},
+        "dry":         {"rating": "good", "reason": "Creates protective film that prevents moisture loss"},
+        "combination": {"rating": "caution", "reason": "May cause congestion on oily zones"},
+        "sensitive":   {"rating": "good", "reason": "Non-irritating silicone safe for sensitive skin"},
+        "normal":      {"rating": "good", "reason": "Smoothing silicone safe for normal skin"},
     },
 
-    # ===== PRESERVATIVES AND SOLVENTS =====
-    "benzyl alcohol": {
-        "oily": "good", "dry": "good", "combination": "good",
-        "sensitive": "caution", "normal": "good",
-        "reason": "Preservative and solvent, may irritate sensitive skin"
-    },
+    # ===== CHELATING AGENTS =====
     "disodium edta": {
-        "oily": "good", "dry": "good", "combination": "good",
-        "sensitive": "caution", "normal": "good",
-        "reason": "Chelating agent that stabilizes formula, generally safe"
+        "oily":        {"rating": "good", "reason": "Stabilizing agent safe for oily skin"},
+        "dry":         {"rating": "good", "reason": "Stabilizing agent safe for dry skin"},
+        "combination": {"rating": "good", "reason": "Stabilizing agent safe for combination skin"},
+        "sensitive":   {"rating": "caution", "reason": "Generally safe but may cause mild reactions"},
+        "normal":      {"rating": "good", "reason": "Safe chelating agent for normal skin"},
     },
     "sodium hydroxide": {
-        "oily": "good", "dry": "good", "combination": "good",
-        "sensitive": "caution", "normal": "good",
-        "reason": "pH adjuster used in small amounts, generally safe"
+        "oily":        {"rating": "good", "reason": "pH adjuster used in tiny amounts, safe for oily skin"},
+        "dry":         {"rating": "good", "reason": "pH adjuster used in tiny amounts, safe for dry skin"},
+        "combination": {"rating": "good", "reason": "pH adjuster safe for combination skin"},
+        "sensitive":   {"rating": "caution", "reason": "pH adjuster that may cause irritation if overused"},
+        "normal":      {"rating": "good", "reason": "pH adjuster used safely in small amounts"},
     },
 
-    # ===== POLYMERS AND THICKENERS =====
+    # ===== POLYMERS =====
     "acrylates crosspolymer": {
-        "oily": "good", "dry": "good", "combination": "good",
-        "sensitive": "caution", "normal": "good",
-        "reason": "Thickening agent, rarely causes irritation"
+        "oily":        {"rating": "good", "reason": "Lightweight thickener that does not clog pores"},
+        "dry":         {"rating": "good", "reason": "Thickening agent safe for dry skin"},
+        "combination": {"rating": "good", "reason": "Safe thickening agent for combination skin"},
+        "sensitive":   {"rating": "caution", "reason": "Rarely causes irritation in sensitive skin"},
+        "normal":      {"rating": "good", "reason": "Safe thickening agent for normal skin"},
     },
     "glyceryl acrylate": {
-        "oily": "good", "dry": "good", "combination": "good",
-        "sensitive": "good", "normal": "good",
-        "reason": "Moisturizing polymer, safe for all skin types"
+        "oily":        {"rating": "good", "reason": "Moisturizing polymer that does not clog pores"},
+        "dry":         {"rating": "good", "reason": "Hydrating polymer that helps dry skin retain moisture"},
+        "combination": {"rating": "good", "reason": "Safe moisturizing polymer for combination skin"},
+        "sensitive":   {"rating": "good", "reason": "Gentle moisturizing polymer for sensitive skin"},
+        "normal":      {"rating": "good", "reason": "Safe moisturizing polymer for normal skin"},
     },
     "carbomer": {
-        "oily": "good", "dry": "good", "combination": "good",
-        "sensitive": "caution", "normal": "good",
-        "reason": "Thickening agent, generally safe"
+        "oily":        {"rating": "good", "reason": "Lightweight thickener that does not clog pores"},
+        "dry":         {"rating": "good", "reason": "Safe thickening agent for dry skin"},
+        "combination": {"rating": "good", "reason": "Safe thickening agent for combination skin"},
+        "sensitive":   {"rating": "caution", "reason": "May cause mild irritation in very sensitive skin"},
+        "normal":      {"rating": "good", "reason": "Safe thickening agent for normal skin"},
     },
 
-    # ===== PLANT OILS =====
-    "sweet almond oil": {
-        "oily": "caution", "dry": "good", "combination": "caution",
-        "sensitive": "good", "normal": "good",
-        "reason": "Nourishing oil, slightly heavy for oily skin"
-    },
-    "sunflower oil": {
-        "oily": "good", "dry": "good", "combination": "good",
-        "sensitive": "good", "normal": "good",
-        "reason": "Lightweight oil with linoleic acid, good for most skin types"
+    # ===== EMOLLIENTS =====
+    "dicaprylyl ether": {
+        "oily":        {"rating": "caution", "reason": "Lightweight but may still feel heavy on oily skin"},
+        "dry":         {"rating": "good", "reason": "Lightweight emollient that softens dry skin"},
+        "combination": {"rating": "caution", "reason": "May add unwanted shine on oily zones"},
+        "sensitive":   {"rating": "good", "reason": "Gentle emollient safe for sensitive skin"},
+        "normal":      {"rating": "good", "reason": "Lightweight emollient for normal skin"},
     },
 }
 
@@ -450,13 +575,14 @@ SYNONYMS = {
     "chandan": "sandalwood",
     "fullers earth": "multani mitti",
     "kaolin clay": "multani mitti",
+
+    # OCR common misreads
+    "prunus amygdalus dulcis sweet almond oil": "sweet almond oil",
     "prunus amygdalus dulcis": "sweet almond oil",
     "prunus amygdalus dulcis oil": "sweet almond oil",
+    "acrylatesco alkyl acrylate crosspolymer": "acrylates crosspolymer",
+    "acrylates co alkyl acrylate crosspolymer": "acrylates crosspolymer",
     "acrylates c10 30 alkyl acrylate crosspolymer": "acrylates crosspolymer",
     "glyceryl acrylate acrylic acid copolymer": "glyceryl acrylate",
     "peg 30 stearate": "peg stearate",
-
-    "prunus amygdalus dulcis sweet almond oil": "sweet almond oil",
-    "acrylatesco alkyl acrylate crosspolymer": "acrylates crosspolymer",
-    "acrylates co alkyl acrylate crosspolymer": "acrylates crosspolymer",
 }

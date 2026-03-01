@@ -1,9 +1,13 @@
 import easyocr
 import re
+import spacy
 from data.ingredients import SYNONYMS
 
-# Initialize EasyOCR reader - English only
+# Initialize EasyOCR reader
 reader = easyocr.Reader(['en'], gpu=False)
+
+# Load spaCy English model
+nlp = spacy.load('en_core_web_sm')
 
 # Phrases to filter out from ingredient list
 FILTER_PHRASES = [
@@ -16,12 +20,38 @@ FILTER_PHRASES = [
     "http",
 ]
 
+def clean_with_spacy(text):
+    """
+    Uses spaCy NLP to extract meaningful ingredient tokens.
+    Removes stop words, punctuation, and irrelevant tokens.
+    Returns cleaned ingredient text.
+    """
+    doc = nlp(text)
+    
+    cleaned_tokens = []
+    for token in doc:
+        # Skip stop words like "and", "the", "or"
+        if token.is_stop:
+            continue
+        # Skip pure punctuation
+        if token.is_punct:
+            continue
+        # Skip very short tokens
+        if len(token.text.strip()) < 2:
+            continue
+        # Skip numbers only
+        if token.is_digit:
+            continue
+        cleaned_tokens.append(token.text.lower().strip())
+    
+    return " ".join(cleaned_tokens)
+
 def extract_ingredients(image_path):
     """
-    Extracts ingredient list from product image using OCR.
+    Extracts ingredient list from product image using OCR and spaCy NLP.
     Returns normalized list of ingredients.
     """
-    # Step 1: Extract raw text from image
+    # Step 1: Extract raw text from image using EasyOCR
     results = reader.readtext(image_path, detail=0)
     raw_text = " ".join(results).lower()
 
@@ -33,11 +63,11 @@ def extract_ingredients(image_path):
     cleaned = re.sub(r'[^a-z\s,]', '', raw_text)
 
     # Step 4: Split by comma to get individual ingredients
-    ingredients_list = [i.strip() for i in cleaned.split(",") if i.strip()]
+    raw_ingredients = [i.strip() for i in cleaned.split(",") if i.strip()]
 
-    # Step 5: Filter out non-ingredient phrases and short words
+    # Step 5: Filter out non-ingredient phrases
     filtered_list = []
-    for ingredient in ingredients_list:
+    for ingredient in raw_ingredients:
         ingredient = ingredient.strip()
 
         # Skip very short entries
@@ -54,12 +84,24 @@ def extract_ingredients(image_path):
         if not should_skip:
             filtered_list.append(ingredient)
 
-    # Step 6: Normalize using synonyms mapping
+    # Step 6: Apply spaCy NLP processing for better matching
     normalized = []
     for ingredient in filtered_list:
         ingredient = ingredient.strip().lower()
+
+        # Check direct match first
         if ingredient in SYNONYMS:
             ingredient = SYNONYMS[ingredient]
-        normalized.append(ingredient)
+            normalized.append(ingredient)
+            continue
+
+        # Apply spaCy cleaning for better matching
+        spacy_cleaned = clean_with_spacy(ingredient)
+        
+        # Check if spaCy cleaned version matches synonyms
+        if spacy_cleaned in SYNONYMS:
+            normalized.append(SYNONYMS[spacy_cleaned])
+        else:
+            normalized.append(ingredient)
 
     return normalized
