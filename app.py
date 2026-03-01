@@ -4,6 +4,7 @@ import tempfile
 import os
 from utils.ocr import extract_ingredients
 from utils.recommend import analyze_ingredients
+from utils.database import save_analysis
 
 st.set_page_config(
     page_title="Skincare Advisor",
@@ -271,10 +272,19 @@ if uploaded_file:
             try:
                 ingredients = extract_ingredients(tmp_path)
                 if ingredients:
-                    st.session_state["report"] = analyze_ingredients(
-                        ingredients, skin_type
-                    )
+                    report = analyze_ingredients(ingredients, skin_type)
+                    st.session_state["report"] = report
                     st.session_state["ingredients"] = ingredients
+
+                    # Save to database
+                    save_analysis(
+                        skin_type=report["skin_type"],
+                        safety_score=report["safety_score"],
+                        confidence=report["confidence"],
+                        verdict=report["verdict"],
+                        total_ingredients=report["total_analyzed"],
+                        total_matched=report["total_scored"]
+                    )
                 else:
                     st.session_state["report"] = None
                     st.session_state["ingredients"] = []
@@ -429,4 +439,3 @@ else:
             'letter-spacing:0.15em; padding:2rem 0;">Upload a product image to begin analysis</div>',
             unsafe_allow_html=True
         )
-
