@@ -60,7 +60,7 @@ def extract_ingredients(image_path):
         raw_text = raw_text.split("ingredients")[-1]
 
     # Step 3: Clean text - keep only letters and commas
-    cleaned = re.sub(r'[^a-z\s,]', '', raw_text)
+    cleaned = re.sub(r'[^a-z0-9\s,\-]', '', raw_text)
 
     # Step 4: Split by comma to get individual ingredients
     raw_ingredients = [i.strip() for i in cleaned.split(",") if i.strip()]

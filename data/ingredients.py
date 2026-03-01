@@ -552,7 +552,7 @@ SYNONYMS = {
     "butylparaben": "parabens",
     "aloe barbadensis": "aloe vera",
     "aloe barbadensis leaf extract": "aloe vera",
-    "butylene glycol": "propylene glycol",
+    "butylene glycol": "glycerin",
 
     # Indian / Ayurvedic synonyms
     "haldi": "turmeric",
@@ -572,7 +572,6 @@ SYNONYMS = {
     "symplocos racemosa": "lodhra",
     "bacopa monnieri": "brahmi",
     "vetiveria zizanioides": "vetiver",
-    "chandan": "sandalwood",
     "fullers earth": "multani mitti",
     "kaolin clay": "multani mitti",
 
