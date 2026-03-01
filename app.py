@@ -7,11 +7,10 @@ from utils.recommend import analyze_ingredients
 
 st.set_page_config(
     page_title="Smart Skincare Advisor",
-    page_icon="🧴",
     layout="centered"
 )
 
-st.title("🧴 Smart Skincare Advisor")
+st.title("Smart Skincare Advisor")
 st.subheader("Find out if a product is right for your skin!")
 
 st.markdown("### Step 1: Select Your Skin Type")
@@ -30,61 +29,92 @@ if uploaded_file:
     image = Image.open(uploaded_file)
     st.image(image, caption="Uploaded Image", width=500)
 
-if uploaded_file:
-    if st.button("🔍 Analyze Product"):
+    if st.button("Analyze Product"):
         with st.spinner("Analyzing ingredients... Please wait!"):
+
             with tempfile.NamedTemporaryFile(
                 delete=False, suffix=".jpg"
             ) as tmp:
                 tmp.write(uploaded_file.getvalue())
                 tmp_path = tmp.name
 
-            ingredients = extract_ingredients(tmp_path)
-            report = analyze_ingredients(ingredients, skin_type)
-            os.unlink(tmp_path)
+            try:
+                ingredients = extract_ingredients(tmp_path)
+            except Exception:
+                st.error("OCR processing failed. Please try a clearer image.")
+                ingredients = []
+            finally:
+                os.unlink(tmp_path)
 
-        st.markdown("---")
-        st.markdown("### 📊 Analysis Result")
-
-        verdict = report["verdict"]
-
-        if verdict == "SUITABLE":
-            st.success("✅ SUITABLE for your skin type!")
-        elif verdict == "USE WITH CAUTION":
-            st.warning("⚠️ USE WITH CAUTION!")
+        if len(ingredients) == 0:
+            st.error("Could not detect ingredients. Please upload a clearer image.")
         else:
-            st.error("❌ AVOID this product!")
+            report = analyze_ingredients(ingredients, skin_type)
 
-        col1, col2, col3 = st.columns(3)
-        with col1:
-            st.metric("✅ Good", len(report["good_ingredients"]))
-        with col2:
-            st.metric("⚠️ Caution", len(report["caution_ingredients"]))
-        with col3:
-            st.metric("❌ Bad", len(report["bad_ingredients"]))
+            st.markdown("---")
+            st.markdown("### Analysis Result")
 
-        if report["good_ingredients"]:
-            st.markdown("#### ✅ Good Ingredients")
-            for item in report["good_ingredients"]:
-                st.success(f"**{item['name']}** — {item['reason']}")
+            verdict = report["verdict"]
 
-        if report["caution_ingredients"]:
-            st.markdown("#### ⚠️ Use With Caution")
-            for item in report["caution_ingredients"]:
-                st.warning(f"**{item['name']}** — {item['reason']}")
+            if verdict == "SUITABLE":
+                st.success(verdict)
+            elif verdict in ["USE WITH CAUTION", "RISKY"]:
+                st.warning(verdict)
+            else:
+                st.error(verdict)
 
-        if report["bad_ingredients"]:
-            st.markdown("#### ❌ Avoid These Ingredients")
-            for item in report["bad_ingredients"]:
-                st.error(f"**{item['name']}** — {item['reason']}")
+            st.markdown(f"_{report['verdict_detail']}_")
 
-        if report["unknown_ingredients"]:
-            st.markdown("#### 🔍 Unknown Ingredients")
-            st.info(", ".join(report["unknown_ingredients"]))
+            st.markdown("---")
 
-        st.markdown("---")
-        st.caption(
-            f"Analyzed {report['total_analyzed']} ingredients "
-            f"for {report['skin_type']} skin type"
-        )
+            col1, col2, col3 = st.columns(3)
+            with col1:
+                st.metric("Safety Score", f"{report['safety_score']} / 10")
+            with col2:
+                st.metric("Confidence", f"{report['confidence']}%")
+            with col3:
+                st.metric("Ingredients Analyzed", report['total_analyzed'])
 
+            st.progress(report["safety_score"] / 10)
+
+            st.markdown("---")
+
+            col4, col5, col6 = st.columns(3)
+            with col4:
+                st.metric("Good", len(report["good_ingredients"]))
+            with col5:
+                st.metric("Caution", len(report["caution_ingredients"]))
+            with col6:
+                st.metric("Bad", len(report["bad_ingredients"]))
+
+            if report["good_ingredients"]:
+                st.markdown("#### Good Ingredients")
+                for item in report["good_ingredients"]:
+                    st.success(f"**{item['name']}** - {item['reason']}")
+
+            if report["caution_ingredients"]:
+                st.markdown("#### Use With Caution")
+                for item in report["caution_ingredients"]:
+                    st.warning(f"**{item['name']}** - {item['reason']}")
+
+            if report["bad_ingredients"]:
+                st.markdown("#### Avoid These Ingredients")
+                for item in report["bad_ingredients"]:
+                    st.error(f"**{item['name']}** - {item['reason']}")
+
+            if report["unknown_ingredients"]:
+                st.markdown("#### Unknown Ingredients")
+                st.info(
+                    f"These ingredients were not found in our database: "
+                    f"{', '.join(report['unknown_ingredients'])}"
+                )
+
+            st.markdown("---")
+            st.caption(
+                f"Analyzed {report['total_analyzed']} ingredients | "
+                f"{report['total_scored']} matched | "
+                f"Skin type: {report['skin_type']}"
+            )
+
+else:
+    st.info("Please upload an image of the product ingredients list.")
