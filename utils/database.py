@@ -1,13 +1,18 @@
 import psycopg2
 from psycopg2.extras import RealDictCursor
+import os
+from dotenv import load_dotenv
 
-# Database connection settings
+# Load environment variables from .env file
+load_dotenv()
+
+# Database connection settings from .env
 DB_CONFIG = {
-    "host": "localhost",
-    "database": "skincare_advisor",
-    "user": "postgres",
-    "password": "Postgresql@2026",
-    "port": "5432"
+    "host": os.getenv("DB_HOST", "localhost"),
+    "database": os.getenv("DB_NAME", "skincare_advisor"),
+    "user": os.getenv("DB_USER", "postgres"),
+    "password": os.getenv("DB_PASSWORD", ""),
+    "port": os.getenv("DB_PORT", "5432")
 }
 
 def get_connection():
@@ -25,6 +30,7 @@ def save_analysis(skin_type, safety_score, confidence, verdict, total_ingredient
     if not conn:
         return False
 
+    cursor = None
     try:
         cursor = conn.cursor()
         cursor.execute("""
@@ -35,10 +41,12 @@ def save_analysis(skin_type, safety_score, confidence, verdict, total_ingredient
         conn.commit()
         return True
     except Exception as e:
+        conn.rollback()
         print(f"Save failed: {e}")
         return False
     finally:
-        cursor.close()
+        if cursor:
+            cursor.close()
         conn.close()
 
 def get_analysis_history():
@@ -47,6 +55,7 @@ def get_analysis_history():
     if not conn:
         return []
 
+    cursor = None
     try:
         cursor = conn.cursor(cursor_factory=RealDictCursor)
         cursor.execute("""
@@ -59,7 +68,8 @@ def get_analysis_history():
         print(f"Fetch failed: {e}")
         return []
     finally:
-        cursor.close()
+        if cursor:
+            cursor.close()
         conn.close()
 
 def test_connection():
